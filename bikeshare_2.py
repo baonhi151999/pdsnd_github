@@ -10,6 +10,21 @@ city_list = ['chicago', 'new york city', 'washington']
 month_list = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
 day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
 
+def check_validation_input(promt, validation_option)
+    """
+    Gets user input and validates it against a set of allowed choices.
+    Args:
+    prompt (str): The message to display to the user when requesting input.
+    valid_options (list): A list containing the allowed input choices.
+    Returns:
+    str: The user's valid input converted to lowercase.
+    """
+   while True:
+        user_input = input(promt).lower.()
+        if user_input in validation_option:
+            return user_input
+        else:
+            print(f"Invalid input. Please choose from: {','.join(validation_option)}")
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -22,7 +37,7 @@ def get_filters():
     print('Greetings! Let\'s delve into some fascinating US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('Please specify the city: ').lower()
+        city = check_validation_input('Please enter the city name: ', city_list)
         if city in city_list:
             break
         else:
@@ -30,7 +45,7 @@ def get_filters():
 
     # get user input for month (all, january, february, ... , june)
     while True:
-        month = input('Please specify the month: ').lower()
+        month = check_validation_input('Please enter the month name: ', month_list)
         if month in month_list:
             break
         else:
@@ -38,7 +53,7 @@ def get_filters():
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        day = input('Please specify the day: ').lower()
+        day = check_validation_input('Please enter the day name: ', day_list)
         if day in day_list:
             break
         else:
